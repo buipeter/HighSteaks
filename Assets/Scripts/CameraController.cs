@@ -7,9 +7,14 @@ public class CameraController : MonoBehaviour
     public Transform player;
     public Vector3 offset;
 
+    public bool useOffsetValues;
+
     void Start()
     {
-        offset = player.position - transform.position;
+        if (!useOffsetValues)
+        {
+            offset = player.position - transform.position;
+        }
         
     }
 
