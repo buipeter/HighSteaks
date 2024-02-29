@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     void ApplyGravity()
     {
         moveDirection.y += Physics.gravity.y * gravityScale * Time.deltaTime;
+
     }
 
     IEnumerator Dash()
