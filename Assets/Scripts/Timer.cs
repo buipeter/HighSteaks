@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class Timer : MonoBehaviour
+public class Timer   : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
     private float timer;
@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     {
         // Initialize the timer to zero
         timer = 0f;
+        timerText.gameObject.SetActive(true);
     }
 
     private void Update()
