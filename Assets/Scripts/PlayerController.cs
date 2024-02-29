@@ -47,7 +47,12 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovementInput()
     {
-        moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
+        //moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
+        Vector3 forwardComponent = transform.forward * Input.GetAxisRaw("Vertical");
+        Vector3 horizComponent = transform.right * Input.GetAxisRaw("Horizontal");
+        float vertComponent = moveDirection.y;
+        moveDirection = moveSpeed * (forwardComponent + horizComponent).normalized;
+        moveDirection.y = vertComponent;
     }
 
     void HandleJumpInput()
