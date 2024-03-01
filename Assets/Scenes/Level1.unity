@@ -6426,6 +6426,8 @@ MonoBehaviour:
   useOffsetValues: 0
   rotateSpeed: 1
   cameraPivot: {fileID: 2078695052}
+  maxLookUp: 70
+  maxLookDown: 70
 --- !u!1 &963680518 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1718839437809988, guid: 5fb4dbc1b7c07b9418845eb61970d9df, type: 3}
