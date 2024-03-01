@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
         if (controller.isGrounded)
         {
-            moveDirection.y = 0f;
+            moveDirection.y = -0.5f;
             HandleJumpInput();
         }
 
