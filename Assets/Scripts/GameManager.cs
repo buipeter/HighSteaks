@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
         // if isLevelComplete is true, then give player option to press space to reset and play again
         if (isLevelComplete)
         {
+            // if player press space, it will call for a reset in the collectibles and the scene will reload
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Reset();
@@ -64,7 +65,7 @@ public class GameManager : MonoBehaviour
     // once all 8 collectibles is completed, level complete is called
     public void LevelComplete()
     {
-        // stops the time, and shows the winText
+        // stops the game time, and shows the winText
         Time.timeScale = 0f;
         winText.enabled = true;
         winText.text = "You win! Thank you for playing Checkpoint 1! Press Space to play again!";

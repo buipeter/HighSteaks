@@ -34,6 +34,9 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        // checks if the level is not completed, so it does not cause bugs
+        // there was a bug when if level is completed and you press escape, you will still get the pause menu
+        // and you can press escape again and it will activate the camera controls.
         if (!GameManager.isLevelComplete)
         {
             pauseMenu.SetActive(true);
