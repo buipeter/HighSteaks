@@ -5,19 +5,8 @@ using UnityEngine;
 public class CollectiblePickup : MonoBehaviour
 {
     public int currentValue;
-
+    public AudioClip collectSound;
     public GameObject collectibleEffect;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,7 +14,14 @@ public class CollectiblePickup : MonoBehaviour
         {
             FindObjectOfType<GameManager>().AddCollectibles(currentValue);
 
+            // Instantiate the collectible effect
             Instantiate(collectibleEffect, transform.position, transform.rotation);
+
+            // Play the collect sound if available
+            if (collectSound != null)
+            {
+                AudioSource.PlayClipAtPoint(collectSound, transform.position);
+            }
 
             Destroy(gameObject);
         }

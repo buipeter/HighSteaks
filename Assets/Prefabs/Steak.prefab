@@ -173,4 +173,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentValue: 1
+  collectSound: {fileID: 8300000, guid: d758319e2d756bd499adc373ef951b48, type: 3}
   collectibleEffect: {fileID: 8538679559852155514, guid: 628d9aeff4d5c0440a44885103d28526, type: 3}
