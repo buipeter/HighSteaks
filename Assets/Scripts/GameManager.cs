@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // if the player collects 8 or if isLevelComplete is false
+        // check if the player collects 8 steaks and if isLevelComplete is false
         if (currentCollectibles == 8 && !isLevelComplete)
         {
             LevelComplete();
@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public void AddCollectibles(int collectiblesToAdd)
     {
         // counter for collectibles to track.
+        // will be added on trigger in CollectiblePickup script
         currentCollectibles += collectiblesToAdd;
 
         //update the call to collectible text ui everytime player collects collectible
