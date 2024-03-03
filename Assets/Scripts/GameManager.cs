@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        collectibleText.text = "Steaks: " + currentCollectibles.ToString() + " / " + totalCollectibles;
         winText.enabled = false;
         isLevelComplete = false;
     }
