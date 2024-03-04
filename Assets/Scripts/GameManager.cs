@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static int currentCollectibles;
     public TextMeshProUGUI collectibleText;
     public TextMeshProUGUI winText;
-    public int totalCollectibles = 8; // CHANGE THIS VALUE depending on AMT of collectibles on a level
+    public int totalCollectibles; // CHANGE THIS VALUE depending on AMT of collectibles on a level
 
     // bool to check if the level is completed
     public static bool isLevelComplete;
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         // check if it exists
         if (collectibleText != null)
         {
-            // if exists, update the text out of 8 (max collectibles on checkpoint 1)
+            // if exists, update the text out of 11 (max collectibles on checkpoint 1)
             collectibleText.text = "Steaks: " + currentCollectibles.ToString() + " / " + totalCollectibles;
         }
         else
