@@ -12,12 +12,14 @@ public class GameManager : MonoBehaviour
 
     // bool to check if the level is completed
     public static bool isLevelComplete;
+    public static bool level1Completed;
 
     void Start()
     {
         collectibleText.text = "Steaks: " + currentCollectibles.ToString() + " / " + CollectiblePickup.total;
         winText.enabled = false;
         isLevelComplete = false;
+        level1Completed = false;
     }
 
     private void Update()
@@ -75,6 +77,7 @@ public class GameManager : MonoBehaviour
 
         // sets the isLevelComplete to true as the level is completed
         isLevelComplete = true;
+        level1Completed = true;
     }
 
     // resets everything back to default

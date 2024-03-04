@@ -7,10 +7,12 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public static bool isPaused;
+    private bool checkRestartButton;
 
     // on game start, does not show the pauseMenu
     void Start()
     {
+        checkRestartButton = false;
         pauseMenu.SetActive(false);
         
     }
@@ -32,6 +34,15 @@ public class PauseMenu : MonoBehaviour
                 // if isn't then call PauseGame
                 PauseGame();
             }
+        }
+
+        if (checkRestartButton)
+        {
+            Time.timeScale = 1f;
+            pauseMenu.SetActive(false);
+            CollectiblePickup.total = 0;
+            isPaused = false;
+            GameManager.currentCollectibles = 0;
         }
         
     }
@@ -63,14 +74,13 @@ public class PauseMenu : MonoBehaviour
     // a button within our PauseMenu to restart the level
     public void RestartLevel()
     {
-        pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
+        CollectiblePickup.total = 0;
         isPaused = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-        // there was a bug where if you collected collectibles, then restart level, the counter did not restart so it still counted the previous
-        // sessions collectibles and you could be finished at 5/8 or 3/8 depending on how many you collected from previous session
         GameManager.currentCollectibles = 0;
+        checkRestartButton = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     // a button within our PauseMenu to exit the program completely
@@ -83,5 +93,9 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToHub()
     {
         // not implemented yet
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+        SceneManager.LoadScene("Hub");
     }
 }
