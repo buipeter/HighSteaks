@@ -7,6 +7,14 @@ public class CollectiblePickup : MonoBehaviour
     public int currentValue;
     public AudioClip collectSound;
     public GameObject collectibleEffect;
+    public static int total;
+
+    void Awake() => total++;
+
+    private void Update()
+    {
+        transform.localRotation = Quaternion.Euler(90f, Time.time * 100f, 0);
+    }
 
 
     // on trigger, if "Player" (tagged player in hierarchy), touches collectible, then triggers this method

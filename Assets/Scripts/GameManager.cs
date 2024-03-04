@@ -9,14 +9,14 @@ public class GameManager : MonoBehaviour
     public static int currentCollectibles;
     public TextMeshProUGUI collectibleText;
     public TextMeshProUGUI winText;
-    public int totalCollectibles; // CHANGE THIS VALUE depending on AMT of collectibles on a level
+   // CHANGE THIS VALUE depending on AMT of collectibles on a level
 
     // bool to check if the level is completed
     public static bool isLevelComplete;
 
     void Start()
     {
-        collectibleText.text = "Steaks: " + currentCollectibles.ToString() + " / " + totalCollectibles;
+        collectibleText.text = "Steaks: " + currentCollectibles.ToString() + " / " + CollectiblePickup.total;
         winText.enabled = false;
         isLevelComplete = false;
     }
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         // check if the player collects 8 steaks and if isLevelComplete is false
-        if (currentCollectibles == totalCollectibles && !isLevelComplete)
+        if (currentCollectibles == CollectiblePickup.total && !isLevelComplete)
         {
             LevelComplete();
         }
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         if (collectibleText != null)
         {
             // if exists, update the text out of 11 (max collectibles on checkpoint 1)
-            collectibleText.text = "Steaks: " + currentCollectibles.ToString() + " / " + totalCollectibles;
+            collectibleText.text = "Steaks: " + currentCollectibles.ToString() + " / " + CollectiblePickup.total;
         }
         else
         {
