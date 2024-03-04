@@ -35,7 +35,8 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
-        // updates and checks if the restart button was pressed, if pressed it will reset every collectible, and time, and get the game back into its normal state
+        // updates and checks if the restart button was pressed, if pressed it will reset every collectible,
+        // and time, and get the game back into its normal state
         if (checkRestartButton)
         {
             Time.timeScale = 1f;
