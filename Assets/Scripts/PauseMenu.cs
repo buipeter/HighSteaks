@@ -35,7 +35,7 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
-
+        // updates and checks if the restart button was pressed, if pressed it will reset every collectible, and time, and get the game back into its normal state
         if (checkRestartButton)
         {
             Time.timeScale = 1f;
@@ -74,11 +74,6 @@ public class PauseMenu : MonoBehaviour
     // a button within our PauseMenu to restart the level
     public void RestartLevel()
     {
-        Time.timeScale = 1f;
-        pauseMenu.SetActive(false);
-        CollectiblePickup.total = 0;
-        isPaused = false;
-        GameManager.currentCollectibles = 0;
         checkRestartButton = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -92,7 +87,6 @@ public class PauseMenu : MonoBehaviour
     // a button within our PauseMenu to return to hub
     public void ReturnToHub()
     {
-        // not implemented yet
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
