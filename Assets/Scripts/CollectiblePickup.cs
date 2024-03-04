@@ -9,8 +9,11 @@ public class CollectiblePickup : MonoBehaviour
     public GameObject collectibleEffect;
     public static int total;
 
+    // counts the total amount of collectibles there are on the map
     void Awake() => total++;
 
+
+    // rotates the collectibles within the y axis
     private void Update()
     {
         transform.localRotation = Quaternion.Euler(90f, Time.time * 100f, 0);
