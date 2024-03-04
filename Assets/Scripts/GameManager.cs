@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public static int currentCollectibles;
     public TextMeshProUGUI collectibleText;
     public TextMeshProUGUI winText;
-   // CHANGE THIS VALUE depending on AMT of collectibles on a level
 
     // bool to check if the level is completed
     public static bool isLevelComplete;
@@ -23,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // check if the player collects 8 steaks and if isLevelComplete is false
+        // check if the player collects all collectibles and if isLevelComplete is false
         if (currentCollectibles == CollectiblePickup.total && !isLevelComplete)
         {
             LevelComplete();
@@ -57,16 +56,16 @@ public class GameManager : MonoBehaviour
         // check if it exists
         if (collectibleText != null)
         {
-            // if exists, update the text out of 11 (max collectibles on checkpoint 1)
+            // if exists, update the text out of total collectibles on map
             collectibleText.text = "Steaks: " + currentCollectibles.ToString() + " / " + CollectiblePickup.total;
         }
         else
         {
-            Debug.LogWarning("Collectible does not exist!");
+            Debug.LogWarning("Text UI does not exist!");
         }
     }
 
-    // once all 8 collectibles is completed, level complete is called
+    // once all collectibles is collected, level complete is called
     public void LevelComplete()
     {
         // stops the game time, and shows the winText
