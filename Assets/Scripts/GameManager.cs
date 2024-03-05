@@ -8,18 +8,19 @@ public class GameManager : MonoBehaviour
 {
     public static int currentCollectibles;
     public TextMeshProUGUI collectibleText;
-    public TextMeshProUGUI winText;
+    public GameObject EndGameMenu;
 
     // bool to check if the level is completed
     public static bool isLevelComplete;
     public static bool level1Completed;
 
+
     void Start()
     {
         collectibleText.text = "Steaks: " + currentCollectibles.ToString() + " / " + CollectiblePickup.total;
-        winText.enabled = false;
         isLevelComplete = false;
         level1Completed = false;
+        EndGameMenu.SetActive(false);
     }
 
     private void Update()
@@ -33,12 +34,11 @@ public class GameManager : MonoBehaviour
         // if isLevelComplete is true, then give player option to press space to reset and play again
         if (isLevelComplete)
         {
-            // if player press space, it will call for a reset in the collectibles and the scene will reload
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Reset();
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
+            CollectiblePickup.total = 0;
+            currentCollectibles = 0;
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            EndGameMenu.SetActive(true);
         }
     }
 
@@ -72,8 +72,6 @@ public class GameManager : MonoBehaviour
     {
         // stops the game time, and shows the winText
         Time.timeScale = 0f;
-        winText.enabled = true;
-        winText.text = "You win! Thank you for playing Checkpoint 1! Press Space to play again!";
 
         // sets the isLevelComplete to true as the level is completed
         isLevelComplete = true;
@@ -83,9 +81,9 @@ public class GameManager : MonoBehaviour
     // resets everything back to default
     private void Reset()
     {
+        CollectiblePickup.total = 0;
         currentCollectibles = 0;
         Time.timeScale = 1f;
-        winText.enabled = false;
         isLevelComplete = false;
     }
 }
