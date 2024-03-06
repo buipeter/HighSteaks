@@ -5,6 +5,7 @@ using UnityEngine;
 public class HazardScript : MonoBehaviour
 {
     public int damage;
+    public AudioClip hitSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class HazardScript : MonoBehaviour
     
 
     // on trigger, if "Player" (tagged player in hierarchy), touches hazard, then triggers this method
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other) 
     {
         //Debug.Log("colliding " + other);
         // checks for the Tag of "Player" of which we set in our hierarchy
@@ -30,10 +31,10 @@ public class HazardScript : MonoBehaviour
             //Instantiate(collectibleEffect, transform.position, transform.rotation);
 
             // hazard SFX
-            //if (collectSound != null)
-            //{
-            //    AudioSource.PlayClipAtPoint(collectSound, transform.position);
-            //}
+            if (hitSound != null)
+            {
+                AudioSource.PlayClipAtPoint(hitSound, transform.position);
+            }
 
             
         }
