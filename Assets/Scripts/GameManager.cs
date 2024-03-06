@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         isLevelComplete = false;
         level1Completed = false;
         EndGameMenu.SetActive(false);
+        currentCollectibles = 0;
     }
 
     private void Update()
@@ -34,8 +35,8 @@ public class GameManager : MonoBehaviour
         // if isLevelComplete is true, then give player option to press space to reset and play again
         if (isLevelComplete)
         {
-            CollectiblePickup.total = 0;
-            currentCollectibles = 0;
+            //CollectiblePickup.total = 0;
+            //currentCollectibles = 0;
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             EndGameMenu.SetActive(true);
