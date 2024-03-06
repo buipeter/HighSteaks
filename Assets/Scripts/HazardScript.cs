@@ -31,7 +31,7 @@ public class HazardScript : MonoBehaviour
             //Instantiate(collectibleEffect, transform.position, transform.rotation);
 
             // hazard SFX
-            if (hitSound != null)
+            if (hitSound != null && PlayerController.checkIfDamageTaken)
             {
                 AudioSource.PlayClipAtPoint(hitSound, transform.position);
             }

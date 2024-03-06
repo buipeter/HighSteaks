@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public float invincibilityTimeCounter;
     public int maxHealth; // 5 by default
     public int health;
+    public static bool checkIfDamageTaken;
     
 
     [SerializeField] private TrailRenderer tr;
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Dash());
         }
 
+        checkIfDamageTaken = false;
         // Move the character
         controller.Move(moveDirection * Time.deltaTime);
     }
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
         {
             health -= damage;
             invincibilityTimeCounter = invincibilityTime;
+            checkIfDamageTaken = true;
         }
     }
 
