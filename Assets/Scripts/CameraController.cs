@@ -28,7 +28,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (PauseMenu.isPaused || GameManager.isLevelComplete)
+        if (PauseMenu.isPaused || GameManager.isLevelComplete || GameManager.islevelFailed)
         {
             // turns off camera functionality when game is paused or level is compeleted
         }

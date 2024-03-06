@@ -8,12 +8,14 @@ public class GameManager : MonoBehaviour
 {
     public static int currentCollectibles;
     public TextMeshProUGUI collectibleText;
+    public TextMeshProUGUI endScreen;
     public GameObject EndGameMenu;
 
     // bool to check if the level is completed
     public static bool isLevelComplete;
     public static bool level1Completed;
-
+    public static bool islevelFailed;
+    public PlayerController playerController;
 
     void Start()
     {
@@ -21,25 +23,39 @@ public class GameManager : MonoBehaviour
         collectibleText.text = "Steaks: " + currentCollectibles.ToString() + " / " + CollectiblePickup.total;
         isLevelComplete = false;
         level1Completed = false;
+        islevelFailed = false;
         EndGameMenu.SetActive(false);
         currentCollectibles = 0;
     }
 
     private void Update()
     {
+        
         // check if the player collects all collectibles and if isLevelComplete is false
         if (currentCollectibles == CollectiblePickup.total && !isLevelComplete)
         {
             LevelComplete();
         }
-
+        // check if the player reaches 0 health
+        if (playerController.health <= 0)
+        {
+            LevelFail();
+        }
         // if isLevelComplete is true, then give player option to press space to reset and play again
-        if (isLevelComplete)
+        if (isLevelComplete || islevelFailed)
         {
             //CollectiblePickup.total = 0;
             //currentCollectibles = 0;
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
+            if (isLevelComplete) 
+            {
+                endScreen.text = "You win!";
+            }
+            if(islevelFailed) 
+            {
+                endScreen.text = "Level failed";
+            }
             EndGameMenu.SetActive(true);
         }
     }
@@ -80,6 +96,14 @@ public class GameManager : MonoBehaviour
         level1Completed = true;
     }
 
+    // if player reaches 0 health, they fail the level
+    public void LevelFail()
+    {
+        // stops the game time, and shows failText
+        Time.timeScale = 0f;
+        islevelFailed = true;
+    }
+
     // resets everything back to default
     private void Reset()
     {
@@ -87,5 +111,6 @@ public class GameManager : MonoBehaviour
         currentCollectibles = 0;
         Time.timeScale = 1f;
         isLevelComplete = false;
+        islevelFailed = false;
     }
 }
