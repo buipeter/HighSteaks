@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     public Vector3 moveDirection;
     public float gravityScale;
+    public float coyoteTime; // 5/60 of a second by default
+    public float coyoteTimeCounter;
+    public float jumpBufferTime; // 6/60 of a second by default
+    public float jumpBufferCounter;
 
     [SerializeField] private TrailRenderer tr;
 
@@ -26,16 +30,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleMovementInput();
-
-        if (controller.isGrounded)
-        {
-            moveDirection.y = -0.5f;
-            HandleJumpInput();
-        }
-
         ApplyGravity();
-
-
+        HandleJumpInput();
+        
         // Handle dash input
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
@@ -58,14 +55,41 @@ public class PlayerController : MonoBehaviour
 
     void HandleJumpInput()
     {
+        if (controller.isGrounded)
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+            coyoteTimeCounter = Mathf.Max(coyoteTimeCounter, -10f); // prevents underflow
+        }
+
         if (Input.GetButtonDown("Jump"))
         {
-            moveDirection.y = jumpForce;
+            jumpBufferCounter = jumpBufferTime;
         }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
+            jumpBufferCounter = Mathf.Max(jumpBufferCounter, -10f); //prevents underflow
+
+        }
+        // Allows the player to jump slightly after and before they touch the ground
+        if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
+        {
+            moveDirection.y = jumpForce;
+            jumpBufferCounter = 0f;
+        }
+        
     }
 
     void ApplyGravity()
     {
+        if (controller.isGrounded)
+        {
+            moveDirection.y = -0.5f;
+        }
         moveDirection.y += Physics.gravity.y * gravityScale * Time.deltaTime;
     }
 

@@ -6668,6 +6668,10 @@ MonoBehaviour:
   controller: {fileID: 197653794}
   moveDirection: {x: 0, y: 0, z: 0}
   gravityScale: 5
+  coyoteTime: 0.08333
+  coyoteTimeCounter: 0
+  jumpBufferTime: 0.1
+  jumpBufferCounter: 0
   tr: {fileID: 197653795}
 --- !u!143 &197653794
 CharacterController:
