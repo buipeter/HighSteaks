@@ -81,7 +81,12 @@ public class PlayerController : MonoBehaviour
             moveDirection.y = jumpForce;
             jumpBufferCounter = 0f;
         }
-        
+        // Player jumps lower depending on how long they hold jump
+        if (Input.GetButtonUp("Jump") && moveDirection.y > 0f)
+        {
+            moveDirection.y *= 0.5f;
+            coyoteTimeCounter = 0f;
+        }
     }
 
     void ApplyGravity()
