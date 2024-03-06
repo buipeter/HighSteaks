@@ -6672,7 +6672,7 @@ MonoBehaviour:
   coyoteTimeCounter: 0
   jumpBufferTime: 0.1
   jumpBufferCounter: 0
-  invincibilityTime: 0.1
+  invincibilityTime: 1
   invincibilityTimeCounter: 0
   maxHealth: 5
   health: 0
