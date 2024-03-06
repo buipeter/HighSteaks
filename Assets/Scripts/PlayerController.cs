@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
     public float coyoteTimeCounter;
     public float jumpBufferTime; // 6/60 of a second by default
     public float jumpBufferCounter;
+    public float invincibilityTime; // 20/60 of a second by default
+    public float invincibilityTimeCounter;
+    public int maxHealth; // 5 by default
+    public int health;
+    
 
     [SerializeField] private TrailRenderer tr;
 
@@ -25,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         tr.enabled = false;
+        health = maxHealth;
+        Time.timeScale = 1f;
     }
 
     void Update()
@@ -33,6 +40,12 @@ public class PlayerController : MonoBehaviour
         ApplyGravity();
         HandleJumpInput();
         
+        // Update i-frame time
+        if (invincibilityTimeCounter >= 0f)
+        {
+            invincibilityTimeCounter -= Time.deltaTime;
+        }
+
         // Handle dash input
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
@@ -41,6 +54,15 @@ public class PlayerController : MonoBehaviour
 
         // Move the character
         controller.Move(moveDirection * Time.deltaTime);
+    }
+    public void HandleDamage(int damage)
+    {
+        // If not in i-frames, hit the player and give them i-frames
+        if (invincibilityTimeCounter < 0f)
+        {
+            health -= damage;
+            invincibilityTimeCounter = invincibilityTime;
+        }
     }
 
     void HandleMovementInput()
