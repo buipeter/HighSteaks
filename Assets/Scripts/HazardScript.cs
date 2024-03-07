@@ -26,12 +26,12 @@ public class HazardScript : MonoBehaviour
         // checks for the Tag of "Player" of which we set in our hierarchy
         if (other.tag == "Player")
         {
-            FindObjectOfType<PlayerController>().HandleDamage(damage);
+            bool hit = FindObjectOfType<PlayerController>().HandleDamage(damage);
             // hazard VFX
             //Instantiate(collectibleEffect, transform.position, transform.rotation);
 
             // hazard SFX
-            if (hitSound != null && PlayerController.checkIfDamageTaken)
+            if (hitSound != null && hit)
             {
                 AudioSource.PlayClipAtPoint(hitSound, transform.position);
             }
