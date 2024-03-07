@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
         // Move the character
         controller.Move(moveDirection * Time.deltaTime);
     }
+
+    // returns true when the player is successfully hit
     public bool HandleDamage(int damage)
     {
         // If not in i-frames, hit the player and give them i-frames
