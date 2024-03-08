@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float dashForce;
     public float dashDuration;
+    private Animator playerAnimator;
     public float dashCooldown;
     public CharacterController controller;
     public Vector3 moveDirection;
@@ -20,15 +21,20 @@ public class PlayerController : MonoBehaviour
     public float invincibilityTimeCounter;
     public int maxHealth; // 5 by default
     public int health;
+
+    public AudioClip dashSound;
     
 
     [SerializeField] private TrailRenderer tr;
+
+    public Transform pivot;
 
     private bool isDashing;
     private bool canDash = true;
 
     private void Start()
     {
+        playerAnimator = GetComponent<Animator>();
         tr.enabled = false;
         health = maxHealth;
         Time.timeScale = 1f;
@@ -54,6 +60,24 @@ public class PlayerController : MonoBehaviour
 
         // Move the character
         controller.Move(moveDirection * Time.deltaTime);
+
+        // allows for player direction based on camera direction
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
+        }
+
+        // checks if player model is grounded, if grounded then sets false, if not grounded then sets true and plays jumping animation
+        playerAnimator.SetBool("isGrounded", controller.isGrounded);
+
+        // checks player model's speed, if greater than 0.1 then plays moving animation, if not plays idle animation
+        playerAnimator.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal"))));
+
+        // checks if player model is able to dash, if so trigger animation
+        if (isDashing && canDash)
+        {
+            playerAnimator.SetTrigger("Dashing");
+        }
     }
 
     // returns true when the player is successfully hit
@@ -105,6 +129,7 @@ public class PlayerController : MonoBehaviour
         if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
         {
             moveDirection.y = jumpForce;
+            playerAnimator.SetBool("isGrounded", false);
             jumpBufferCounter = 0f;
         }
         // Player jumps lower depending on how long they hold jump
@@ -131,6 +156,10 @@ public class PlayerController : MonoBehaviour
 
         // Enable the TrailRenderer
         tr.enabled = true;
+        AudioSource.PlayClipAtPoint(dashSound, transform.position);
+
+        // Trigger the dash animation
+        playerAnimator.SetTrigger("Dashing");
 
         // Store the original move speed
         float originalMoveSpeed = moveSpeed;
