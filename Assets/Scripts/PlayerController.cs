@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float dashForce;
     public float dashDuration;
-    private Animator playerAnimator;
+    public Animator playerAnimator;
     public float dashCooldown;
     public CharacterController controller;
     public Vector3 moveDirection;
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         HandleMovementInput();
         ApplyGravity();
         HandleJumpInput();
-        
+
         // Update i-frame time
         if (invincibilityTimeCounter >= 0f)
         {
@@ -61,14 +61,11 @@ public class PlayerController : MonoBehaviour
         // Move the character
         controller.Move(moveDirection * Time.deltaTime);
 
-        // allows for player direction based on camera direction
+        // moves player direction based on camera direction
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
             transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
         }
-
-        // checks if player model is grounded, if grounded then sets false, if not grounded then sets true and plays jumping animation
-        playerAnimator.SetBool("isGrounded", controller.isGrounded);
 
         // checks player model's speed, if greater than 0.1 then plays moving animation, if not plays idle animation
         playerAnimator.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal"))));
@@ -78,6 +75,18 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.SetTrigger("Dashing");
         }
+
+        if (controller.isGrounded)
+        {
+            if (coyoteTimeCounter > 0f)
+            {
+                playerAnimator.SetBool("isGrounded", true);
+            } else
+            {
+                playerAnimator.SetBool("isGrounded", false);
+            }
+            playerAnimator.SetBool("isGrounded", true);
+        } 
     }
 
     // returns true when the player is successfully hit
@@ -156,7 +165,7 @@ public class PlayerController : MonoBehaviour
 
         // Enable the TrailRenderer
         tr.enabled = true;
-        AudioSource.PlayClipAtPoint(dashSound, transform.position);
+        AudioSource.PlayClipAtPoint(dashSound, transform.position, 0.33f);
 
         // Trigger the dash animation
         playerAnimator.SetTrigger("Dashing");

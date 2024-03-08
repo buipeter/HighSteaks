@@ -6200,6 +6200,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4593566136991672, guid: 813f38ebf5eabe1429b83876fbaa47db, type: 3}
   m_PrefabInstance: {fileID: 1225223613}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1195709896 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8317233869622344689, guid: 84b7c8441f160174fa5c6f94cf397f0a, type: 3}
+  m_PrefabInstance: {fileID: 1381655837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1212770435 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4276324180339636, guid: 1aad01ae01d836647b215e40f1f4c1a7, type: 3}
@@ -7316,6 +7321,7 @@ MonoBehaviour:
   jumpForce: 15
   dashForce: 18
   dashDuration: 0.5
+  playerAnimator: {fileID: 1195709896}
   dashCooldown: 3
   controller: {fileID: 1381655842}
   moveDirection: {x: 0, y: 0, z: 0}
@@ -8682,6 +8688,7 @@ MonoBehaviour:
   jumpForce: 15
   dashForce: 18
   dashDuration: 0.5
+  playerAnimator: {fileID: 0}
   dashCooldown: 3
   controller: {fileID: 1636038126}
   moveDirection: {x: 0, y: 0, z: 0}
