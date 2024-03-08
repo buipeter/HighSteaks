@@ -68,7 +68,8 @@ public class PlayerController : MonoBehaviour
         }
 
         // checks player model's speed, if greater than 0.1 then plays moving animation, if not plays idle animation
-        playerAnimator.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal"))));
+        float checkSpeed = Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal"));
+        playerAnimator.SetFloat("Speed", checkSpeed);
 
         // checks if player model is able to dash, if so trigger animation
         if (isDashing && canDash)
@@ -76,17 +77,10 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetTrigger("Dashing");
         }
 
-        if (controller.isGrounded)
+        if (moveDirection.y < 0f)
         {
-            if (coyoteTimeCounter > 0f)
-            {
-                playerAnimator.SetBool("isGrounded", true);
-            } else
-            {
-                playerAnimator.SetBool("isGrounded", false);
-            }
             playerAnimator.SetBool("isGrounded", true);
-        } 
+        }
     }
 
     // returns true when the player is successfully hit
@@ -137,8 +131,8 @@ public class PlayerController : MonoBehaviour
         // Allows the player to jump slightly after and before they touch the ground
         if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
         {
-            moveDirection.y = jumpForce;
             playerAnimator.SetBool("isGrounded", false);
+            moveDirection.y = jumpForce;
             jumpBufferCounter = 0f;
         }
         // Player jumps lower depending on how long they hold jump

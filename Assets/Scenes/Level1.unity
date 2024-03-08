@@ -1941,7 +1941,7 @@ MonoBehaviour:
   jumpForce: 15
   dashForce: 18
   dashDuration: 0.5
-  playerAnimator: {fileID: 57986704}
+  playerAnimator: {fileID: 0}
   dashCooldown: 3
   controller: {fileID: 57986700}
   moveDirection: {x: 0, y: 0, z: 0}
@@ -2096,11 +2096,6 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!95 &57986704 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8317233869622344689, guid: 84b7c8441f160174fa5c6f94cf397f0a, type: 3}
-  m_PrefabInstance: {fileID: 57986696}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &58423027
 PrefabInstance:
   m_ObjectHideFlags: 0
