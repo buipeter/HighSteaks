@@ -11,16 +11,19 @@ public class GateController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        CollectiblePickup.total = 0;
         if (other.CompareTag("Player"))
         {
             if (gameObject.CompareTag("Level1"))
             {
                 SceneManager.LoadScene(level1SceneName);
-                CollectiblePickup.total = 0;
             }
-            else if (gameObject.CompareTag("Level2") && GameManager.level1Completed)
+            else if (gameObject.CompareTag("Level2"))
             {
-                SceneManager.LoadScene(level2SceneName);
+                if (GameManager.level1Completed)
+                {
+                    SceneManager.LoadScene(level2SceneName);
+                }
             }
         }
     }

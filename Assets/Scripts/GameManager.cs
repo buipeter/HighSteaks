@@ -22,19 +22,18 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         collectibleText.text = "Steaks: " + currentCollectibles.ToString() + " / " + CollectiblePickup.total;
         isLevelComplete = false;
-        level1Completed = false;
         islevelFailed = false;
         EndGameMenu.SetActive(false);
         currentCollectibles = 0;
     }
 
     private void Update()
-    {
-        
+    {   
         // check if the player collects all collectibles and if isLevelComplete is false
         if (currentCollectibles == CollectiblePickup.total && !isLevelComplete)
         {
             LevelComplete();
+            level1Completed = true;
         }
         // check if the player reaches 0 health
         if (playerController.health <= 0)
@@ -93,7 +92,6 @@ public class GameManager : MonoBehaviour
 
         // sets the isLevelComplete to true as the level is completed
         isLevelComplete = true;
-        level1Completed = true;
     }
 
     // if player reaches 0 health, they fail the level
