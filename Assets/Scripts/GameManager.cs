@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 
     // bool to check if the level is completed
     public static bool isLevelComplete;
-    public static bool level1Completed;
     public static bool islevelFailed;
     public PlayerController playerController;
 
@@ -28,12 +27,11 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update()
-    {   
+    {
         // check if the player collects all collectibles and if isLevelComplete is false
         if (currentCollectibles == CollectiblePickup.total && !isLevelComplete)
         {
             LevelComplete();
-            level1Completed = true;
         }
         // check if the player reaches 0 health
         if (playerController.health <= 0)

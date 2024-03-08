@@ -20,7 +20,6 @@ public class GateController : MonoBehaviour
             }
             else if (gameObject.CompareTag("Level2"))
             {
-                if (GameManager.level1Completed)
                 {
                     SceneManager.LoadScene(level2SceneName);
                 }
