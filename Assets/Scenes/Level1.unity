@@ -66017,6 +66017,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Steak
       objectReference: {fileID: 0}
+    - target: {fileID: 5308622481131347176, guid: 877ee43d57922094caaf39e20c76a1d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7518698210449113689, guid: 877ee43d57922094caaf39e20c76a1d5, type: 3}
       propertyPath: m_Size.x
       value: 1
