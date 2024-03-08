@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     // bool to check if the level is completed
     public static bool isLevelComplete;
     public static bool islevelFailed;
-    public PlayerController playerController;
+    public PlayerController playerController;   
 
     void Start()
     {
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
             {
                 endScreen.text = "You win!";
             }
-            if(islevelFailed) 
+            if (islevelFailed) 
             {
                 endScreen.text = "Level failed";
             }
