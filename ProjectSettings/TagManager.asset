@@ -15,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - playerLayer
-  - groundLayer
+  - Player
+  - Ground
   - 
   - 
   - 
