@@ -11,6 +11,7 @@ public class EnemyAITest2 : MonoBehaviour
 
     Transform target;
     NavMeshAgent enemy;
+    public Animator enemyAI;
 
     // Start is called before the first frame update
     void Start()
@@ -69,13 +70,17 @@ public class EnemyAITest2 : MonoBehaviour
 
         if (distance <= lookRadius)
         {
+            enemyAI.SetBool("isChasing", true);
             Chase();
+            enemyAI.SetBool("isPatrolling", false);
             if (distance <= enemy.stoppingDistance)
             {
                 FaceTarget();
             }
         } else
         {
+            enemyAI.SetBool("isChasing", false);
+            enemyAI.SetBool("isPatrolling", true);
             Patrol();
         }
     }
