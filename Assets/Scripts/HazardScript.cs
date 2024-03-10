@@ -35,9 +35,6 @@ public class HazardScript : MonoBehaviour
             {
                 AudioSource.PlayClipAtPoint(hitSound, transform.position);
             }
-
-            
         }
     }
-
 }

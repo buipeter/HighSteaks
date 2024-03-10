@@ -3060,11 +3060,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8999338503545881367, guid: 5b5c678f31981e34f9122b87217da1ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -229.23
+      value: -230.157
       objectReference: {fileID: 0}
     - target: {fileID: 8999338503545881367, guid: 5b5c678f31981e34f9122b87217da1ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.87
+      value: 29.56
       objectReference: {fileID: 0}
     - target: {fileID: 8999338503545881367, guid: 5b5c678f31981e34f9122b87217da1ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3141,7 +3141,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -6640,6 +6640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   hitSound: {fileID: 8300000, guid: 8c66fb050c506ba449f4c22a46cf349d, type: 3}
+  enemyAI: {fileID: 85426728}
 --- !u!136 &177419809
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -21894,6 +21895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   hitSound: {fileID: 8300000, guid: 8c66fb050c506ba449f4c22a46cf349d, type: 3}
+  enemyAI: {fileID: 1688133509}
 --- !u!136 &642102789
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -24795,15 +24797,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8999338503545881367, guid: 5b5c678f31981e34f9122b87217da1ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -392.31
+      value: -401.52
       objectReference: {fileID: 0}
     - target: {fileID: 8999338503545881367, guid: 5b5c678f31981e34f9122b87217da1ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -228.612
+      value: -229.227
       objectReference: {fileID: 0}
     - target: {fileID: 8999338503545881367, guid: 5b5c678f31981e34f9122b87217da1ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.505
+      value: -26.52
       objectReference: {fileID: 0}
     - target: {fileID: 8999338503545881367, guid: 5b5c678f31981e34f9122b87217da1ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24880,7 +24882,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -54071,6 +54073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   hitSound: {fileID: 8300000, guid: 8c66fb050c506ba449f4c22a46cf349d, type: 3}
+  enemyAI: {fileID: 712940962}
 --- !u!136 &1503979711
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -60027,7 +60030,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -69382,6 +69385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   hitSound: {fileID: 0}
+  enemyAI: {fileID: 0}
 --- !u!65 &1929809258
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -73750,6 +73754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   hitSound: {fileID: 8300000, guid: 8c66fb050c506ba449f4c22a46cf349d, type: 3}
+  enemyAI: {fileID: 0}
 --- !u!1 &2078695051
 GameObject:
   m_ObjectHideFlags: 0
