@@ -63,11 +63,11 @@ public class PlayerController : MonoBehaviour
         // Move the character
         controller.Move(moveDirection * Time.deltaTime);
 
-        // moves player direction based on camera direction
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-        {
-            transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
-        }
+        //// moves player direction based on camera direction
+        //if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        //{
+        //    transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
+        //}
 
         // checks player model's speed, if greater than 0.1 then plays moving animation, if not plays idle animation
         float checkSpeed = Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal"));
