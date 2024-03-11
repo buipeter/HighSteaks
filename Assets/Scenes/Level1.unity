@@ -2077,6 +2077,7 @@ MonoBehaviour:
   maxHealth: 8
   health: 0
   dashSound: {fileID: 8300000, guid: a87a5eae3fa09f34fba6b8d901ed7069, type: 3}
+  dashRecharge: {fileID: 8300000, guid: fc460c289b8b00345b403c3eca2d3b64, type: 3}
   tr: {fileID: 57986703}
   pivot: {fileID: 57986697}
 --- !u!143 &57986700
@@ -7976,6 +7977,7 @@ MonoBehaviour:
   maxHealth: 8
   health: 0
   dashSound: {fileID: 0}
+  dashRecharge: {fileID: 0}
   tr: {fileID: 197653795}
   pivot: {fileID: 0}
 --- !u!143 &197653794
