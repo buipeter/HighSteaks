@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour
         {
             health -= damage;
             invincibilityTimeCounter = invincibilityTime;
+            health = Mathf.Max(health, 0);
             return true;
         }
         return false;
