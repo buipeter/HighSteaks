@@ -16,6 +16,8 @@ https://assetstore.unity.com/packages/3d/props/food/low-poly-food-lite-258693
 
 https://assetstore.unity.com/packages/3d/props/exterior/low-poly-fence-pack-61661
 
+https://assetstore.unity.com/packages/3d/characters/animals/quirky-series-free-animals-pack-178235
+
 
 Sound bites / Sounds used:
 
