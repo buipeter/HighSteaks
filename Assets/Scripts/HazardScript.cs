@@ -20,7 +20,7 @@ public class HazardScript : MonoBehaviour
     
 
     // on trigger, if "Player" (tagged player in hierarchy), touches hazard, then triggers this method
-    void OnTriggerEnter(Collider other) 
+    void OnTriggerStay(Collider other) 
     {
         //Debug.Log("colliding " + other);
         // checks for the Tag of "Player" of which we set in our hierarchy
@@ -37,4 +37,6 @@ public class HazardScript : MonoBehaviour
             }
         }
     }
+
+    
 }
