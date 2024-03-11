@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public int health;
 
     public AudioClip dashSound;
+    public AudioClip dashRecharge;
     
 
     [SerializeField] private TrailRenderer tr;
@@ -181,7 +183,7 @@ public class PlayerController : MonoBehaviour
 
         // Allow dashing again after cooldown
         yield return new WaitForSeconds(dashCooldown);
-
+        AudioSource.PlayClipAtPoint(dashRecharge, transform.position, 1f);
         canDash = true;
         isDashing = false;
     }
